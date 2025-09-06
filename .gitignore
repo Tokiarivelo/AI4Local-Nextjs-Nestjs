@@ -1,0 +1,45 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+venv/
+.env
+
+node_modules/
+
+build/
+dist/
+
+.DS_Store
+.vscode/
+
+# Docker
+*.dockerignore
+
+# Logs
+*.log
+
+# Database
+*.db
+
+# IDE
+.idea/
+
+# Nx (if applicable)
+.nx/
+.nx-cache/
+
+# pnpm
+pnpm-lock.yaml
+
+# yarn
+yarn.lock
+
+# npm
+package-lock.json
+
+# Screenshots
+screenshots/
+
+
