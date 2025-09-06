@@ -1,0 +1,150 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Customer {
+  id: ID!
+  name: String!
+  email: String!
+  phone: String
+  address: String
+  tags: [String!]!
+  notes: String
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organization: Organization!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Campaign {
+  id: ID!
+  name: String!
+  description: String
+  type: String!
+  content: String!
+  targetTags: [String!]!
+  status: String!
+  scheduledAt: DateTime
+  sentAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organization: Organization!
+}
+
+type Organization {
+  id: ID!
+  name: String!
+  description: String
+  website: String
+  phone: String
+  address: String
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  owner: User!
+  customers: [Customer!]!
+  campaigns: [Campaign!]!
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  phone: String
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organizations: [Organization!]!
+}
+
+type AuthResponse {
+  user: User!
+  token: String!
+}
+
+type Query {
+  customers: [Customer!]!
+  customersByOrganization(organizationId: Int!): [Customer!]!
+  customer(id: Int!): Customer!
+  campaigns: [Campaign!]!
+  campaignsByOrganization(organizationId: Int!): [Campaign!]!
+  campaign(id: Int!): Campaign!
+}
+
+type Mutation {
+  register(input: CreateUserInput!): AuthResponse!
+  login(input: LoginInput!): AuthResponse!
+  createCustomer(input: CreateCustomerInput!): Customer!
+  updateCustomer(id: Int!, input: UpdateCustomerInput!): Customer!
+  removeCustomer(id: Int!): Boolean!
+  createCampaign(input: CreateCampaignInput!): Campaign!
+  updateCampaign(id: Int!, input: UpdateCampaignInput!): Campaign!
+  removeCampaign(id: Int!): Boolean!
+  generateContent(input: GenerateContentInput!): String!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  phone: String
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateCustomerInput {
+  name: String!
+  email: String!
+  phone: String
+  address: String
+  tags: [String!]
+  notes: String
+  organizationId: Int!
+}
+
+input UpdateCustomerInput {
+  name: String
+  email: String
+  phone: String
+  address: String
+  tags: [String!]
+  notes: String
+  organizationId: Int
+  status: String
+}
+
+input CreateCampaignInput {
+  name: String!
+  description: String
+  type: String!
+  content: String!
+  targetTags: [String!]
+  scheduledAt: String
+  organizationId: Int!
+}
+
+input UpdateCampaignInput {
+  name: String
+  description: String
+  type: String
+  content: String
+  targetTags: [String!]
+  scheduledAt: String
+  organizationId: Int
+  status: String
+}
+
+input GenerateContentInput {
+  prompt: String!
+  type: String!
+}
