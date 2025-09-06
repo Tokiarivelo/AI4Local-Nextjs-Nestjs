@@ -142,9 +142,9 @@ function HeroSection() {
             <span className='text-yellow-300'>PME Locales</span>
           </h1>
           <p className='text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto'>
-            Créez des campagnes marketing, générez du contenu avec l'IA, gérez
-            vos clients et acceptez les paiements mobiles - tout optimisé pour
-            Madagascar.
+            Créez des campagnes marketing, générez du contenu avec l&apos;IA,
+            gérez vos clients et acceptez les paiements mobiles - tout optimisé
+            pour Madagascar.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Button
@@ -279,7 +279,7 @@ function CTASection() {
             variant='outline'
             className='border-white text-white hover:bg-white hover:text-blue-600'
           >
-            Contacter l'équipe
+            Contacter l&apos;équipe
           </Button>
         </div>
       </div>
